@@ -1,4 +1,10 @@
 package com.example.demo.service;
 
-public class ProductService {
+import com.example.demo.dto.ProductDto;
+import java.util.List;
+
+public interface ProductService {
+
+    List<ProductDto> readAllProducts();
+
 }

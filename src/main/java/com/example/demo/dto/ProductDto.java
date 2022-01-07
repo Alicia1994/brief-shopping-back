@@ -1,15 +1,16 @@
-package com.example.demo.model;
-import lombok.AllArgsConstructor;
+package com.example.demo.dto;
+
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
-@Entity
-@Table
 @Data
+public class ProductDto {
 
-public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +24,10 @@ public class Product {
 
     @Column
     private int price;
+
+    public ProductDto() {
+
+    }
 
 
 }

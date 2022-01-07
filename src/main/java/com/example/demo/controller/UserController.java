@@ -131,18 +131,11 @@ import java.util.*;
         }
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_ENTREPRENEUR', 'ROLE_INVESTISSEUR')")
-    @PutMapping
-    public User updateUser(@RequestBody User u){
-        return userService.saveUser(u);
-    }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_ENTREPRENEUR', 'ROLE_INVESTISSEUR')")
     @PutMapping("/modif")
     public User updateUser(@RequestBody UserUpdateDto userUpdateDto){
         Optional <User> optionalUser = userService.getUser(userUpdateDto.getId());
         userUpdateDto.setRoles(optionalUser.get().getRoles());
-//        userUpdateDto.setProjects(optionalUser.get().getProjects());
         if(optionalUser.isPresent()){
             return userService.updateUser(userUpdateDto);
         }else {
@@ -151,21 +144,15 @@ import java.util.*;
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/admin")
-    public User updateUProject(@RequestBody UserUpdateDto userUpdateDto){
-        return userService.updateUser(userUpdateDto);
-    }
-
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable("id") Long id) {
         userService.deleteUser(id);
     }
 
-/*    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/admin/{id}")
     public void deleteUseradmin(@PathVariable("id") final Long id) {
         userService.deleteUser(id);
-    }*/
+    }
 
 }

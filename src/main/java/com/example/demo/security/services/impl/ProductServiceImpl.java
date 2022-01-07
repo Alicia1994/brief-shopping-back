@@ -1,9 +1,9 @@
-package com.example.demo.service.impl;
+package com.example.demo.security.services.impl;
 
 import com.example.demo.dto.ProductDto;
 import com.example.demo.model.Product;
 import com.example.demo.repository.ProductRepository;
-import com.example.demo.service.ProductService;
+import com.example.demo.security.services.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

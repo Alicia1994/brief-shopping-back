@@ -5,6 +5,7 @@ import com.example.demo.dto.UserUpdateDto;
 import com.example.demo.model.ERole;
 import com.example.demo.model.Role;
 import com.example.demo.model.User;
+import com.example.demo.payload.request.SearchRequest;
 import com.example.demo.payload.request.SignupRequest;
 import com.example.demo.payload.response.MessageResponse;
 import com.example.demo.repository.RoleRepository;
@@ -131,6 +132,15 @@ import java.util.*;
         }
     }
 
+//    @GetMapping("searchUser")
+//    public Optional<User> searchUser(@RequestBody SearchRequest searchRequest) {
+//        return userService.SearchUser(searchRequest);
+//    }
+
+    @GetMapping("/search/{username}")
+    public Optional<User> searchUser(@PathVariable String username) {
+        return userService.SearchUser(username);
+    }
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_ENTREPRENEUR', 'ROLE_INVESTISSEUR')")
     @PutMapping
     public User updateUser(@RequestBody User u){
@@ -142,7 +152,6 @@ import java.util.*;
     public User updateUser(@RequestBody UserUpdateDto userUpdateDto){
         Optional <User> optionalUser = userService.getUser(userUpdateDto.getId());
         userUpdateDto.setRoles(optionalUser.get().getRoles());
-//        userUpdateDto.setProjects(optionalUser.get().getProjects());
         if(optionalUser.isPresent()){
             return userService.updateUser(userUpdateDto);
         }else {
@@ -152,7 +161,7 @@ import java.util.*;
 
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/admin")
-    public User updateUProject(@RequestBody UserUpdateDto userUpdateDto){
+    public User updateUserr(@RequestBody UserUpdateDto userUpdateDto){
         return userService.updateUser(userUpdateDto);
     }
 

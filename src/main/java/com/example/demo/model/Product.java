@@ -1,17 +1,14 @@
-package com.example.demo.dto;
-
-import com.example.demo.model.Category;
+package com.example.demo.model;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table
 @Data
-public class ProductDto {
 
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,10 +23,7 @@ public class ProductDto {
     @Column
     private int price;
 
-    @Column
+    @OneToOne(fetch=FetchType.EAGER)
     private Category category;
-
-    public ProductDto() {
-    }
 
 }

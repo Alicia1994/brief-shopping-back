@@ -1,9 +1,3 @@
-INSERT INTO product (name) VALUES
-('ID'),
-('NAME'),
-('DESCRIPTION'),
-('PRICE');
-
 INSERT INTO product (name, description, price)
 VALUES ('Matrix 4', 'Histoire de Matrix', '25');
 
@@ -15,3 +9,10 @@ VALUES ('Encanto', 'Histoire de Encanto', '35');
 
 INSERT INTO product (name, description, price)
 VALUES ('House of Gucci', 'Histoire de Hose of Gucci', '40');
+
+INSERT into category (name) values ("Aventure"),
+                                    ("Action"),
+                                    ("Horreur");
+
+
+

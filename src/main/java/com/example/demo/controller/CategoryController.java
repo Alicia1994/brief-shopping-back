@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.ProductDto;
-import com.example.demo.service.ProductService;
+import com.example.demo.model.Category;
+import com.example.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,15 +13,14 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/product")
-
-public class ProductController {
+@RequestMapping("/api/category")
+public class CategoryController {
 
     @Autowired
-    private ProductService productService;
+    private CategoryService categoryService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProductDto>> readAllProducts() {
-        return new ResponseEntity<>(productService.readAllProducts(), HttpStatus.OK);
+    public ResponseEntity<List<Category>> showAllCategories() {
+        return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);
     }
 }

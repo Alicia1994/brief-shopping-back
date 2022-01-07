@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.Category;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -25,9 +26,10 @@ public class ProductDto {
     @Column
     private int price;
 
+    @Column
+    private Category category;
+
     public ProductDto() {
-
     }
-
 
 }

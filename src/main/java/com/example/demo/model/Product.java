@@ -1,5 +1,4 @@
 package com.example.demo.model;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,5 +23,7 @@ public class Product {
     @Column
     private int price;
 
+    @OneToOne(fetch=FetchType.EAGER)
+    private Category category;
 
 }

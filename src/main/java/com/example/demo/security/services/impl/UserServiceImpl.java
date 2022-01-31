@@ -47,8 +47,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> SearchUser(String username) {
-
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public Optional<User> SearchUserForm(SearchRequest searchRequest) {
+        return userRepository.findByUsername(searchRequest.getName());
     }
 
     @Override

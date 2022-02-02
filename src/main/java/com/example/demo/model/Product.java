@@ -23,6 +23,9 @@ public class Product {
     @Column
     private int price;
 
+    @Column
+    private String image;
+
     @OneToOne(fetch=FetchType.EAGER)
     private Category category;
 

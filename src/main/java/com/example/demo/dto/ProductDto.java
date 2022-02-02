@@ -29,6 +29,9 @@ public class ProductDto {
     @Column
     private Category category;
 
+    @Column
+    private String image;
+
     public ProductDto() {
     }
 

@@ -99,13 +99,11 @@ import java.util.*;
         return userService.SearchUser(username);
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_ENTREPRENEUR', 'ROLE_INVESTISSEUR')")
     @PutMapping
     public User updateUser(@RequestBody User u){
         return userService.saveUser(u);
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_ENTREPRENEUR', 'ROLE_INVESTISSEUR')")
     @PutMapping("/modif")
     public User updateUser(@RequestBody UserUpdateDto userUpdateDto){
         Optional <User> optionalUser = userService.getUser(userUpdateDto.getId());

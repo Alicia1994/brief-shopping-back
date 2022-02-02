@@ -24,6 +24,7 @@ public class User {
 	private String email;
 	private String presentation;
 	private String password;
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinTable(	name = "user_roles",
@@ -31,10 +32,22 @@ public class User {
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
+	@OneToMany(orphanRemoval = true, cascade = CascadeType.ALL, mappedBy = "userId")
+	private Set<Order> orders = new HashSet<>();
+
 	public User(String username, String email, String presentation, String encode) {
 		this.username = username;
 		this.email = email;
 		this.presentation = presentation;
 		this.password = encode;
+	}
+
+
+	public User(Long id, String username, String email, String presentation, String password) {
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.presentation = presentation;
+		this.password = password;
 	}
 }
